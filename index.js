@@ -10,23 +10,40 @@ const OLATB = 0x15;
 
 const FIRING_DELAY_MS = 10;
 
-const firing_order = [ 
-    { 'pin': 0x01, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 0 },
-    { 'pin': 0x02, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x04, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x08, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x10, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x20, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x40, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x80, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x01, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x02, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x04, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x08, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x10, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x20, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x40, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
-    { 'pin': 0x80, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 }
+const firing_order = [
+    { 'pin': 0xfe, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 0 },
+    { 'pin': 0xfd, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xfb, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xf7, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xef, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xdf, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xbf, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0x7f, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xfe, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xfd, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xfb, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xf7, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xef, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xdf, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xbf, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0x7f, 'side': OLATA, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
+    { 'pin': 0xfe, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xfd, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xfb, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xf7, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xef, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xdf, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xbf, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0x7f, 'side': OLATB, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xfe, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xfd, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xfb, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xf7, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xef, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xdf, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xbf, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0x7f, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 },
+    { 'pin': 0xff, 'side': OLATA, 'mcp': MCP_TWO_ADDR, 'delay': 1000 }
 ];
 
 const i2c1 = i2c.openSync(1);
@@ -34,37 +51,41 @@ const i2c1 = i2c.openSync(1);
 function setRelay(firing_info, cb) {
     setTimeout(function () {
         console.log('Setting relay value: ' + firing_info.pin);
-        i2c1.writeWordSync(firing_info.mcp, firing_info.side, firing_info.pin);
+        i2c1.writeByteSync(firing_info.mcp, firing_info.side, firing_info.pin);
         cb();
     }, firing_info.delay + FIRING_DELAY_MS);
 }
 
-function setIOMode(mcp_addr, delay) {
+function setIOMode(delay) {
     setTimeout(function () {
-        i2c1.writeWordSync(mcp_addr, IO_DIR_A, 0x00);
-        i2c1.writeWordSync(mcp_addr, IO_DIR_B, 0x00);
+        i2c1.writeByteSync(MCP_ONE_ADDR, IO_DIR_A, 0x00);
+        i2c1.writeByteSync(MCP_ONE_ADDR, IO_DIR_B, 0x00);
+        i2c1.writeByteSync(MCP_TWO_ADDR, IO_DIR_A, 0x00);
+        i2c1.writeByteSync(MCP_TWO_ADDR, IO_DIR_B, 0x00);
     }, delay);
 }
 
-function setAllPinsOff(mcp_addr, delay) {
+function setAllPinsOff(delay) {
     setTimeout(function () {
-        i2c1.writeWordSync(mcp_addr, OLATA, 0x00);
-        i2c1.writeWordSync(mcp_addr, OLATB, 0x00);
+        i2c1.writeByteSync(MCP_ONE_ADDR, OLATA, 0xff);
+        i2c1.writeByteSync(MCP_ONE_ADDR, OLATB, 0xff);
+        i2c1.writeByteSync(MCP_TWO_ADDR, OLATA, 0xff);
+        i2c1.writeByteSync(MCP_TWO_ADDR, OLATB, 0xff);
     }, delay);
 }
 
-setIOMode(MCP_ONE_ADDR, 0);
-setAllPinsOff(MCP_ONE_ADDR, FIRING_DELAY_MS);
+setIOMode(0);
+setAllPinsOff(FIRING_DELAY_MS);
 
 vasync.forEachPipeline({
     'func': setRelay,
-    'inputs': firing_order 
+    'inputs': firing_order
 }, function (err, results) {
     if (err) {
         console.log('error: %s', err.message);
     }
 
-    setAllPinsOff(MCP_ONE_ADDR, FIRING_DELAY_MS);
+    setAllPinsOff(FIRING_DELAY_MS);
 });
 
 i2c1.closeSync();

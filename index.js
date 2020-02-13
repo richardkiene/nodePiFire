@@ -11,7 +11,7 @@ const OLATB = 0x15;
 const FIRING_DELAY_MS = 10;
 
 const firing_order = [
-    { 'pin': 0xfe, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 0 },
+    { 'pin': 0xfe, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
     { 'pin': 0xfd, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
     { 'pin': 0xfb, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
     { 'pin': 0xf7, 'side': OLATB, 'mcp': MCP_ONE_ADDR, 'delay': 1000 },
@@ -49,11 +49,29 @@ const firing_order = [
 const i2c1 = i2c.openSync(1);
 
 function setRelay(firing_info, cb) {
-    setTimeout(function () {
-        console.log('Setting relay value: ' + firing_info.pin);
-        i2c1.writeByteSync(firing_info.mcp, firing_info.side, firing_info.pin);
-        cb();
-    }, firing_info.delay + FIRING_DELAY_MS);
+    vasync.pipeline({
+        'funcs': [
+            function fire(_, callback) {
+                console.log('Setting relay value: ' + firing_info.pin);
+                i2c1.writeByteSync(firing_info.mcp, firing_info.side, firing_info.pin);
+                callback();
+            },
+            function reset(_, callback) {
+                setTimeout(function () {
+                    console.log('Unsetting relay!');
+                    i2c1.writeByteSync(firing_info.mcp, firing_info.side, 0xff);
+                    callback();
+                }, firing_info.delay + FIRING_DELAY_MS);
+            }
+        ]
+    }, function (err, results) {
+            if (err) {
+                console.log('err: %s', err);
+            } else {
+                cb();
+            }
+            return;
+    });
 }
 
 function setIOMode(delay) {
